@@ -21,7 +21,6 @@ PrompTrend is an advanced chat support system that combines intent classificatio
 - **Caching**: Redis
 - **ML Libraries**: PyTorch, Scikit-learn
 - **Testing**: Pytest
-- **Documentation**: OpenAPI (Swagger)
 
 ## 📋 Prerequisites
 
@@ -75,11 +74,6 @@ uvicorn main:app --reload
 
 The API will be available at `http://localhost:8000`
 
-## 📚 API Documentation
-
-Once the application is running, you can access the interactive API documentation at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
 
 ## 🧪 Testing
 
