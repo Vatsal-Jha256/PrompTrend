@@ -33,7 +33,7 @@ PrompTrend is an advanced chat support system that combines intent classificatio
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/promptrend.git
+git clone https://github.com/Vatsal-Jha256/PrompTrend.git
 cd promptrend
 ```
 
