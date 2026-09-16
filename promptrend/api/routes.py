@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, BackgroundTasks, Depends
 from typing import List, Optional
-from core.models import (
+from promptrend.core.models import (
     RecommendationRequest,
     RecommendationResponse,
     TrainingRequest,
@@ -9,11 +9,11 @@ from core.models import (
     FeedbackRequest,
     FeedbackResponse
 )
-from services.intent_classifier import IntentClassifier
-from services.recommender import ContextualBandit
-from services.recommendation_service import RecommendationService
+from promptrend.services.intent_classifier import IntentClassifier
+from promptrend.services.recommender import ContextualBandit
+from promptrend.services.recommendation_service import RecommendationService
 from sqlalchemy.orm import Session
-from core.database import get_db
+from promptrend.core.database import get_db
 import logging
 
 # Configure logging
@@ -145,7 +145,7 @@ async def get_recommendations(request: RecommendationRequest, db: Session = Depe
         )
         
         # Generate questions using the question generator
-        from services.question_generator import QuestionGenerator
+        from promptrend.services.question_generator import QuestionGenerator
         question_generator = QuestionGenerator()
         generated_questions = question_generator.generate_questions(
             result["recommendations"],

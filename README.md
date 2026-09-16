@@ -1,5 +1,7 @@
 # PrompTrend: Intelligent Chat Support System
 
+[![PyPI version](https://badge.fury.io/py/promptrend.svg)](https://badge.fury.io/py/promptrend)
+
 PrompTrend is an advanced chat support system that combines intent classification and contextual bandit algorithms to provide personalized recommendations and responses. The system uses BERT for intent classification and implements a contextual multi-armed bandit approach for dynamic learning from user interactions.
 
 ## 🌟 Key Features
@@ -29,35 +31,45 @@ PrompTrend is an advanced chat support system that combines intent classificatio
 - Redis
 - CUDA-compatible GPU (optional, for faster model training)
 
+## 💻 Usage as a Library
+
+You can now easily integrate PrompTrend's AI components directly into your own applications:
+
+```python
+from promptrend import IntentClassifier, Recommender, QuestionGenerator
+
+# Initialize components
+classifier = IntentClassifier(model_name="bert-base-uncased")
+recommender = Recommender()
+generator = QuestionGenerator()
+
+# Example: Get intent
+text = "How do I reset my password?"
+intent = classifier.predict(text)
+
+# Example: Get recommendation
+context = recommender.get_context_vector(user_id="123", chat_history=[text], intent_scores=[0.9])
+score = recommender.predict(user_id="123", category="account_help", context=context)
+```
+
+
 ## ⚙️ Installation
 
-1. Clone the repository:
+You can install PrompTrend directly via pip (once published):
+```bash
+pip install promptrend
+```
+
+For development, clone the repository and install in editable mode:
 ```bash
 git clone https://github.com/Vatsal-Jha256/PrompTrend.git
 cd promptrend
+pip install -e .[test]
 ```
 
-2. Create and activate a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or
-.\venv\Scripts\activate  # Windows
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-4. Set up environment variables:
+Set up environment variables:
 ```bash
 python scripts/setup_env.py --env development
-```
-
-5. Initialize the database:
-```bash
-alembic upgrade head
 ```
 
 ## 🚀 Running the Application
@@ -67,9 +79,9 @@ alembic upgrade head
 redis-server
 ```
 
-2. Start the application:
+2. Start the application using the CLI:
 ```bash
-uvicorn main:app --reload
+promptrend-server
 ```
 
 The API will be available at `http://localhost:8000`

@@ -1,5 +1,5 @@
 import pytest
-from services.recommender import ContextualBandit
+from promptrend.services.recommender import ContextualBandit
 import numpy as np
 
 def test_bandit_training():

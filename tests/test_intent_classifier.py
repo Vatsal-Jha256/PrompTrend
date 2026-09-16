@@ -1,5 +1,5 @@
 import pytest
-from services.intent_classifier import IntentClassifier
+from promptrend.services.intent_classifier import IntentClassifier
 
 def test_intent_classification():
     classifier = IntentClassifier()

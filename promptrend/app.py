@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from api.routes import router as api_router  # Note the import alias
-from core.config import get_settings
-from core.database import init_db
+from promptrend.api.routes import router as api_router  # Note the import alias
+from promptrend.core.config import get_settings
+from promptrend.core.database import init_db
 import logging
 import os
 
@@ -24,7 +24,7 @@ app = FastAPI(
 # Setup middleware for exception handling
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from services.error_handler import PrompTrendError, handle_error
+from promptrend.services.error_handler import PrompTrendError, handle_error
 
 @app.middleware("http")
 async def handle_exceptions(request: Request, call_next):
@@ -57,6 +57,9 @@ def startup_event():
     except Exception as e:
         logger.error(f"Failed to initialize database: {str(e)}")
 
-if __name__ == "__main__":
+def start():
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("promptrend.app:app", host="0.0.0.0", port=8000, reload=True)
+
+if __name__ == "__main__":
+    start()

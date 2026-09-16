@@ -7,8 +7,8 @@ from fastapi.testclient import TestClient
 from datetime import datetime
 import logging
 from main import app
-from services.question_generator import QuestionGenerator
-from services.error_handler import handle_error, ModelError
+from promptrend.services.question_generator import QuestionGenerator
+from promptrend.services.error_handler import handle_error, ModelError
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ def test_complete_flow():
         ]
         
         # Convert to proper TrainingData objects
-        from core.models import TrainingData
+        from promptrend.core.models import TrainingData
         formatted_data = [TrainingData(**item) for item in training_data]
         
         train_response = client.post(
@@ -121,7 +121,7 @@ def test_complete_flow():
 
 def test_database_integration():
     """Test database operations"""
-    from core.database import init_db, get_db, User, Recommendation
+    from promptrend.core.database import init_db, get_db, User, Recommendation
     db = next(get_db())
     
     try:
@@ -164,7 +164,7 @@ def test_database_integration():
 @pytest.mark.asyncio
 async def test_cache_integration():
     """Test that caching is working properly"""
-    from core.cache import RedisCache
+    from promptrend.core.cache import RedisCache
     cache = RedisCache()
     
     # Test basic cache operations
@@ -183,7 +183,7 @@ async def test_cache_integration():
     assert cache.get(test_key) is None
 @pytest.fixture
 def clean_db():
-    from core.database import init_db, get_db, User
+    from promptrend.core.database import init_db, get_db, User
     init_db()
     db = next(get_db())
     try:

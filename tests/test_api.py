@@ -3,8 +3,8 @@ from fastapi.testclient import TestClient
 from datetime import datetime, timedelta
 import json
 from main import app
-from services.intent_classifier import IntentClassifier
-from services.recommender import ContextualBandit
+from promptrend.services.intent_classifier import IntentClassifier
+from promptrend.services.recommender import ContextualBandit
 import time
 client = TestClient(app)
 

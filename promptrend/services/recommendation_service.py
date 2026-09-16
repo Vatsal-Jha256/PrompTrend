@@ -1,10 +1,10 @@
 # services/recommendation_service.py
-from core.database import get_db, User, Recommendation, ChatHistory
-from core.cache import RedisCache, cached
+from promptrend.core.database import get_db, User, Recommendation, ChatHistory
+from promptrend.core.cache import RedisCache, cached
 from typing import List, Dict, Optional
 from sqlalchemy.orm import Session
-from services.intent_classifier import IntentClassifier
-from services.recommender import ContextualBandit
+from promptrend.services.intent_classifier import IntentClassifier
+from promptrend.services.recommender import ContextualBandit
 import numpy as np
 from fastapi import HTTPException
 
