@@ -55,7 +55,7 @@ score = recommender.predict(user_id="123", category="account_help", context=cont
 
 ## ⚙️ Installation
 
-You can install PrompTrend directly via pip (once published):
+You can install PrompTrend directly from [PyPI](https://pypi.org/project/promptrend/) via pip:
 ```bash
 pip install promptrend
 ```
@@ -130,6 +130,11 @@ promptrend/
 ├── requirements.txt
 └── README.md
 ```
+
+
+## 🌟 Support the Project!
+
+If you find this library useful, please consider giving it a **star** on GitHub and checking it out on **[PyPI](https://pypi.org/project/promptrend/)**! Your support helps the project grow!
 
 ## 🤝 Contributing
 
